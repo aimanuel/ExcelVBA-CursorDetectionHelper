@@ -1,0 +1,21 @@
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+'CURSOR/CELL LOCATION DETECTION VISUALIZATION HELPER
+'ini membantu user untuk mendeteksi di cell mana yang saat ini diselect/dilihat, karena bawaan dari excel kurang jelas & freeze pane
+'tidak terlalu membantu. bisa diimplementasikan utk row & kolom
+
+'UNTUK MENG-IMPLEMENTASIKAN CURSOR DETECTION INI MEMBUTUHKAN :
+'1. Formula di row : =CELL("row")=CELL("row",C13) ; di column : =CELL("col")=CELL("col",N8) ; row & column (C13 & N8) adalah cell itu sendiri
+'2. Aplikasikan di row & column sebyk yg diinginkan/dibutuhkan (Note! jika terlalu byk, menyebabkan file berjalan agak lambat & file membesar)
+'3. Pasang Conditional formatting jika true maka kolom & baris akan berubah warna-nya
+'4. Pasang coding dibawah ini di sheetnya dengan event worksheet_selectionChange
+'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Private Sub Worksheet_SelectionChange(ByVal Target As Range)
+
+'sheet ini perlu di calculate terus menerus supaya cond. formatting u/ highlight row & column jalan
+'Source http://www.tushar-mehta.com/publish_train/xl_vba_cases/0121%20highlight%20row%20and%20col%20of%20selected%20cell.shtml
+'----------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ Target.Calculate
+End Sub
